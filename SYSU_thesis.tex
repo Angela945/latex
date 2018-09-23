@@ -1,0 +1,114 @@
+% !Mode:: "TeX:UTF-8"
+
+\def\usewhat{pdflatex}      % 定义编译方式 dvipdfmx 或者 pdflatex，默认为 dvipdfmx
+                            % 方式编译，如果需要修改，只需改变花括号中的内容即可。
+
+\documentclass[12pt,openright,twoside]{book}          % book 作为文档类
+                                                    % 插入空白页可以设置openright
+
+\input{setup/package}            % 定义本文所使用宏包
+
+\graphicspath{{figures/}}       % 定义所有的.eps/.pdf 图片文件在figures 子目录下
+
+
+\begin{document}
+
+
+\begin{CJK*}{UTF8}{song}    % 开始中文字体使用
+
+\input{setup/format}        % 完成对论文各个部分格式的设置
+
+% ——————————————————————————————————————————————
+% 以下是论文导言部分，包括论文的封面，中英文摘要和中文目录
+
+\frontmatter
+\fancypagestyle{plain}{
+\fancyhf{}
+\renewcommand{\headrulewidth}{0 pt}
+\fancyfoot[C]{\song\xiaowu~\thepage~}
+}
+
+%%%%%%%%%%   封面   %%%%%%%%%%
+\input{preface/cover}
+
+%%%%%%%%%%   目录   %%%%%%%%%%
+\defaultfont
+%\clearpage{\pagestyle{empty}\cleardoublepage}
+\clearpage
+%\pagestyle{empty}
+%\setcounter{page}{1}                                 % 单独从 1 开始编页码
+%\pagenumbering{arabic}
+\titleformat{\chapter}{\centering\sanhao\hei}{\chaptername}{2em}{} % 设置目录两字的格式
+
+%\pdfbookmark[0]{目~~录}{mulu}
+\addcontentsline{toc}{chapter}{目录}
+%\titleformat{\chapter}{\centering\sihao\hei}\CJKnumber{\chaptername}{2em}{}
+%\renewcommand{\chaptername}{\prechaptername\CJKnumber{\thechapter}\postchaptername}
+\tableofcontents                                     % 中文目录
+
+%\fancypagestyle{plain}{
+%\fancyhf{}
+%\renewcommand{\headrulewidth}{0 pt}
+%\fancyfoot[C]{\song\xiaowu~\thepage~}
+%}
+\thispagestyle{plain}
+
+% ——————————————————————————————————————————————
+% 以下是论文正文，内容在body 子文件夹下
+
+\mainmatter\defaultfont\sloppy\raggedbottom
+
+\makeatletter
+	\fancypagestyle{plain}{                              % 设置开章页眉页脚风格
+		\fancyhf{}
+		\fancyhead[OC]{\song\wuhao \@cheading}            % 首页页眉格式
+        \fancyhead[EC]{\song\wuhao \@ctitle}          % 首页页眉格式
+		\fancyfoot[C]{\song\xiaowu ~\thepage~}           % 首页页脚格式
+		\renewcommand{\headrulewidth}{0.5pt}
+		\renewcommand{\footrulewidth}{0pt}}
+\makeatother
+
+% 单独从 1 开始编页码
+\setcounter{page}{1}
+% chapter标题格式：小二，黑体，居中
+%\titleformat{\chapter}{\centering\xiaoer\hei}{{\chaptername}}{2em}{}
+%%%%%%%%%%   正文   %%%%%%%%%%
+\floatname{algorithm}{算法}
+
+\include{body/intro}
+
+%\include{body/pre}
+%\include{body/mfd_system}
+%\include{body/mfd_oc}
+%\include{body/concl}
+
+%%%%%%%%%%  参考文献  %%%%%%%%%%
+\lhead{}
+\rhead{}
+\chead{\song\wuhao 中山大学硕士学位论文} % 覆盖设置页眉内容
+\defaultfont
+\bibliographystyle{references/TJUThesis}
+%\bibliographystyle{GBT7714-2005NLang}
+\phantomsection
+\markboth{参考文献}{参考文献}
+\addcontentsline{toc}{chapter}{参考文献}       % 参考文献加入到中文目录
+%\nocite{*}                                     % 若将此命令屏蔽掉，则未引用的文献不会出现在文后的参考文献中
+\bibliography{references/thesis}
+
+
+%\titleformat{\chapter}{\centering\sihao\hei}\CJKnumber{\chaptername}{2em}{} % 重新设置想要的chapter格式
+
+%% 如果使用第“一”章
+\renewcommand{\chaptername}{\prechaptername\CJKnumber{\thechapter}\postchaptername}
+%% 使用第“1”章
+%%\renewcommand{\chaptername}{\prechaptername~\thechapter~\postchaptername}
+
+\include{body/app}
+\include{body/abb}
+\include{body/paper}
+\include{body/acknowledgements}
+
+\clearpage
+\end{CJK*}% 结束中文字体使用
+
+\end{document}

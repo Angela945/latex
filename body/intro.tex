@@ -1,0 +1,121 @@
+% !Mode:: "TeX:UTF-8"
+
+\chapter{引言}
+
+    本模板根据天津大学硕士论文模板改编，适用于中山大学工学院硕士论文。
+
+\section{使用方法}
+
+    Windows 环境下winedt, pdftexify 编译，测试~ textlive 可用，TexStudio 可用，未测试~MacOS 环境。文件夹，文件名建议采用英文，不要空格。所有文件以~UTF-8格式保存。clean 用于清理文件编译过程中的缓存。
+    
+    更改页眉标题，
+
+\section{例子}
+
+\subsection{图表}
+
+\begin{table}[htbp]
+    \linespread{1.3}
+    \caption{和~XX 的比较}
+    \label{tab}
+    \centering
+    \begin{threeparttable}
+    \small
+\begin{tabular}
+{p{0.76in}p{2.2in}p{1.5in}p{1.278in}}
+\hline
+    & a
+    & b
+    & 本文  \\
+\hline
+      A
+    & Aa
+    & Ab
+    & c\\
+%\hline
+      线性化
+    &\checkmark
+    &$\times$
+    &$\times$\\
+\hline
+\end{tabular}
+\end{threeparttable}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=2in]{sysu}\\
+  \caption{技术路线图}\label{fig}
+\end{figure}
+
+\subsection{数学环境}
+
+
+\subsubsection{公式}
+
+\begin{align}
+\label{eq}
+    a+b=c
+\end{align}
+
+    引用公式~\eqref{eq}
+
+\subsubsection{假设~Assumption}
+
+%\begin{assumption}：\label{ass}
+%    假设
+%\end{assumption}
+
+\subsubsection{定义~Definition}
+
+\begin{definition}：\label{def}
+    定义
+\end{definition}
+
+\subsubsection{命题~Proposition}
+
+\begin{proposition}： \label{pro}
+    命题
+\end{proposition}
+
+\subsubsection{定理~Theorem}
+
+\begin{theorem}： \label{th}
+    定理
+\end{theorem}
+
+\subsubsection{引理~Lemma}
+
+\begin{lemma}： \label{le}
+     引理
+\end{lemma}
+
+
+
+
+\subsubsection{推论~Corollary}
+
+\begin{corollary}： \label{co}
+     推论
+\end{corollary}
+
+
+\subsubsection{证明~Proof}
+
+\begin{proof}
+    证明
+\end{proof}
+
+
+\subsubsection{注~Remark}
+
+\begin{remark}：
+
+\end{remark}
+
+\subsubsection{算法}
+
+
+\subsection{引用}
+
+    参考文献上标\cite{friesz2011,DH2017}，使用~UTF-8 编码的~bib 文件，可引用中文参考文献，文献标识不能为中文。
